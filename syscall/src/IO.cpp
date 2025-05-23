@@ -9,6 +9,8 @@
 #include "IO.h"
 #include "customWarning.h"
 
+// -------------------------------------------------------------------------------------------------------------------------------------------------- //
+
 #define FREE_(ptr) do { \
     free(ptr);          \
     ptr = NULL;         \
@@ -17,9 +19,9 @@
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 static const uint32_t FILE_MODE[] = {O_RDONLY, O_WRONLY, O_RDWR, 
-                                     O_APPEND, O_CREAT, O_DSYNC, 
-                                     O_EXCL, O_NOCTTY, O_NONBLOCK, 
-                                     O_RSYNC, O_SYNC, O_TRUNC};
+                                     O_APPEND, O_CREAT,  O_DSYNC, 
+                                     O_EXCL,   O_NOCTTY, O_NONBLOCK, 
+                                     O_RSYNC, O_SYNC,  O_TRUNC};
 
 static const size_t MAX_FILE_MODE = sizeof(FILE_MODE) / sizeof(FILE_MODE[0]);
 
@@ -153,13 +155,13 @@ Status openFile(File *file) {
                 return FILE_OPEN_ERROR;
             }
 
-            // case BY_SYS_ERRLIST: {
-                // if (errno >= 0 && errno < sys_nerr) {
-                    // customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s)", errno, file->fileName);
-                    // fprintf(stderr, "%s\n", sys_errlist[errno]);
-                    // return FILE_OPEN_ERROR;
-                // }
-            // }
+            case BY_SYS_ERRLIST: {
+                if (errno >= 0 && errno < sys_nerr) {
+                    customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s) ", errno, file->fileName);
+                    fprintf(stderr, "%s\n", sys_errlist[errno]);
+                    return FILE_OPEN_ERROR;
+                }
+            }
 
             case BY_PERROR: {
                 customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s) ", errno, file->fileName);
