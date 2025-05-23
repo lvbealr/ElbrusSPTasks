@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <stdlib.h>
 #include <inttypes.h>
 #include <fcntl.h>
@@ -19,6 +20,7 @@ static const uint32_t FILE_MODE[] = {O_RDONLY, O_WRONLY, O_RDWR,
                                      O_APPEND, O_CREAT, O_DSYNC, 
                                      O_EXCL, O_NOCTTY, O_NONBLOCK, 
                                      O_RSYNC, O_SYNC, O_TRUNC};
+
 static const size_t MAX_FILE_MODE = sizeof(FILE_MODE) / sizeof(FILE_MODE[0]);
 
 static const unsigned int SEED = 42;
@@ -102,6 +104,8 @@ Status handleFileNames(fileContainer *container, char **fileArray) {
         errorOutputMode mode = (errorOutputMode)(rand() % MODE_COUNT);
 
         initializeFile(container->files[i], fileArray[i], fileFlags, mode);
+
+        container->size++;
     }
 
     return NO_ERRORS;
@@ -144,19 +148,21 @@ Status openFile(File *file) {
     if (file->fileDescriptor == FILE_OPEN_ERROR) {
         switch (file->mode) {
             case BY_ERRNO: {
-                customPrint(red, bold, bgDefault, "[ ERROR #%d ]:\t%s", errno, strerror(errno));
+                customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s) ", errno, file->fileName);
+                fprintf(stderr, "%s\n", strerror(errno));
                 return FILE_OPEN_ERROR;
             }
 
-            case BY_SYS_ERRLIST: {
-                if (errno >= 0 && errno < sys_nerr) {
-                    customPrint(red, bold, bgDefault, "[ ERROR #%d ]:\t%s", errno, sys_errlist[errno]);
-                    return FILE_OPEN_ERROR;
-                }
-            }
+            // case BY_SYS_ERRLIST: {
+                // if (errno >= 0 && errno < sys_nerr) {
+                    // customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s)", errno, file->fileName);
+                    // fprintf(stderr, "%s\n", sys_errlist[errno]);
+                    // return FILE_OPEN_ERROR;
+                // }
+            // }
 
             case BY_PERROR: {
-                customPrint(red, bold, bgDefault, "[ ERROR #%d ]:\t");
+                customPrint(red, bold, bgDefault, "[ ERROR #%d ]: (file: %s) ", errno, file->fileName);
                 perror(strerror(errno));
                 return FILE_OPEN_ERROR;
             }
