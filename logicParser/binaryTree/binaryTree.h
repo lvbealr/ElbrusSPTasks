@@ -11,14 +11,14 @@
 
 template<typename DT>
 inline binaryTreeError treeInitialize(binaryTree<DT> *tree) {
-    customWarning(tree != NULL, binaryTreeError::TREE_NULL_POINTER);
+    customWarning(tree, binaryTreeError::TREE_NULL_POINTER);
 
     if (nodeInitialize(&tree->root) != binaryTreeError::NO_ERRORS) {
         return binaryTreeError::ROOT_NULL_POINTER;
     }
 
-    tree->root->left  = NULL;
-    tree->root->right = NULL;
+    tree->root->left  = nullptr;
+    tree->root->right = nullptr;
 
     return binaryTreeError::NO_ERRORS;
 }
@@ -36,7 +36,7 @@ inline binaryTreeError treeDestruct(binaryTree<DT> *tree) {
 
 template<typename DT>
 inline binaryTreeError nodeInitialize(node<DT> **currentNode) {
-    *currentNode = (node<DT> *)calloc(1, sizeof(node<DT>));
+    *currentNode = new node<DT>;
 
     customWarning((*currentNode), binaryTreeError::NODE_NULL_POINTER);
 
@@ -48,7 +48,7 @@ inline binaryTreeError nodeLink(binaryTree<DT> *tree, node<DT> *currentNode, lin
     customWarning(tree,        binaryTreeError::TREE_NULL_POINTER);
     customWarning(currentNode, binaryTreeError::NODE_NULL_POINTER);
 
-    node<DT> **childNode = NULL;
+    node<DT> **childNode = nullptr;
 
     switch (direction) {
         case linkDirection::LEFT:
@@ -79,8 +79,8 @@ inline binaryTreeError nodeLink(binaryTree<DT> *tree, node<DT> *currentNode, lin
     nodeInitialize(&newNode);
 
     newNode->parent = currentNode;
-    newNode->left   =        NULL;
-    newNode->right  =        NULL;
+    newNode->left   =     nullptr;
+    newNode->right  =     nullptr;
     *childNode      =     newNode;
 
     DUMP_(tree);
@@ -101,17 +101,17 @@ inline binaryTreeError nodeDestruct(binaryTree<DT> *tree, node<DT> **node) {
         nodeDestruct(tree, &((*node)->right));
     }
 
-    FREE_(*node);
+    delete *node;
 
     return binaryTreeError::NO_ERRORS;
 }
 
 template<typename DT>
 node<DT> *emplaceNode(node<DT> currentNode) {
-    node<DT> *newNode = NULL;
+    node<DT> *newNode = nullptr;
 
     nodeInitialize(&newNode);
-    customWarning(newNode != NULL, NULL);
+    customWarning(newNode, nullptr);
 
     *newNode = currentNode;
 

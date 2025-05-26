@@ -4,11 +4,6 @@
 #include <cstdio>
 #include <cstdlib>
 
-#define FREE_(ptr) do { \
-    free(ptr);          \
-    ptr = NULL;         \
-} while (0)
-
 enum class binaryTreeError {
     NO_ERRORS             =        0,
     TREE_NULL_POINTER     =  1 <<  0,
@@ -26,15 +21,15 @@ enum class linkDirection {
 
 template<typename DT>
 struct node {
-    DT        data   =   {};
-    node<DT> *left   = NULL;
-    node<DT> *right  = NULL;
-    node<DT> *parent = NULL;
+    DT        data   =      {};
+    node<DT> *left   = nullptr;
+    node<DT> *right  = nullptr;
+    node<DT> *parent = nullptr;
 };
 
 template<typename DT>
 struct binaryTree {
-    node<DT> *root = NULL;
+    node<DT> *root = nullptr;
 };
 
 template<typename DT>
