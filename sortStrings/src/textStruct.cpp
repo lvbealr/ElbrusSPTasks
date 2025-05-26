@@ -22,7 +22,7 @@ IOError destroyTextLine(textLine *lineArray) {
     return NO_ERRORS;
 }
 
-IOError pointTextLine(textData *textData, textLine *lineArray) {
+IOError pointTextLine(const textData *textData, textLine *lineArray) {
     customWarning(textData, TEXT_DATA_BAD_POINTER);
     customWarning(lineArray, LINE_ARRAY_BAD_POINTER);
 
@@ -97,7 +97,7 @@ IOError destroyTextData(textData *textData) {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-size_t lineCounter(textData *textData) {
+size_t lineCounter(const textData *textData) {
     customWarning(textData, TEXT_DATA_BAD_POINTER);
 
     size_t lineCount = {};

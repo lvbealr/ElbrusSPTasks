@@ -41,7 +41,7 @@ struct textData {
 
 IOError initializeTextLine(textData *textData, textLine *lineArray);
 IOError destroyTextLine   (textLine *lineArray);
-IOError pointTextLine     (textData *textData, textLine *lineArray);
+IOError pointTextLine     (const textData *textData, textLine *lineArray);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -50,7 +50,7 @@ IOError destroyTextData   (textData *textData);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-size_t  lineCounter       (textData *textData);
+size_t  lineCounter       (const textData *textData);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
