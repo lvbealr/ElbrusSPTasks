@@ -12,7 +12,7 @@
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-static void printAnswer(long long maxSum, size_t maxLeft, size_t maxRight, int *array) {
+static void printAnswer(const long long maxSum, const size_t maxLeft, const size_t maxRight, const int *array) {
     printf("Max sum: %lld\n", maxSum);
     printf("Subarray: [ ");
 
