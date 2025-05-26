@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "parser.h"
 #include "binaryTreeDef.h"
 #include "binaryTree.h"
+#include "parser.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 

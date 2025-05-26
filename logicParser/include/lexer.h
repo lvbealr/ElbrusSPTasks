@@ -2,9 +2,8 @@
 #define LEXER_H_
 
 #include <string>
-#include <vector>
-#include <memory>
 #include <unistd.h>
+#include <vector>
 
 #include "buffer.h"
 

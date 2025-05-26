@@ -44,7 +44,7 @@ inline binaryTreeError nodeInitialize(node<DT> **currentNode) {
 }
 
 template<typename DT>
-inline binaryTreeError nodeLink(binaryTree<DT> *tree, node<DT> *currentNode, linkDirection direction) {
+inline binaryTreeError nodeLink(binaryTree<DT> *tree, const node<DT> *currentNode, const linkDirection direction) {
     customWarning(tree,        binaryTreeError::TREE_NULL_POINTER);
     customWarning(currentNode, binaryTreeError::NODE_NULL_POINTER);
 
