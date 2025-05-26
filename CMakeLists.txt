@@ -14,7 +14,7 @@ set(DEBUG_FLAGS "-D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggres
 							 -Wlarger-than=8192 -Wstack-usage=8192 -pie -fPIE -Werror=vla -fsanitize=address,alignment,bool,bounds,enum,    \
 							 float-cast-overflow,float-divide-by-zero,integer-divide-by-zero,leak,nonnull-attribute,null,object-size,       \
 							 return,returns-nonnull-attribute,shift,signed-integer-overflow,undefined,unreachable,vla-bound,vptr")
-set(RELEASE_FLAGS "-O3 -DNDEBUG -std=c++17")
+set(RELEASE_FLAGS -O3 -DNDEBUG -std=c++17)
 
 get_property(CURRENT_CONFIG GLOBAL PROPERTY CONFIG)
 
