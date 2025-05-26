@@ -6,12 +6,12 @@
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 sortStatus sortArray   (sortContext *context);
-void      *sortSubarray(void *data);
+void      *sortSubarray(const void *data);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
 sortStatus mergeSubarrays(sortContext *context);
-sortStatus merge         (int *array, size_t left, size_t mid, size_t right);
+sortStatus merge         (int *array, const size_t left, const size_t mid, const size_t right);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 

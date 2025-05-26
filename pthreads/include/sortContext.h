@@ -63,16 +63,18 @@ struct sortContext {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-sortStatus   initializeArray      (Array *array);
+sortStatus   initializeArray      (Array *array, const size_t size);
 sortStatus   destroyArray         (Array *array);
-sortStatus   generateRandomArray  (Array *array, size_t size, unsigned int seed);
+sortStatus   generateRandomArray  (Array *array, const size_t size, const unsigned int seed);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-sortStatus   initializePThreads   (PThreads *threads, size_t threadsCount);
+sortStatus   initializePThreads   (PThreads *threads, const size_t threadsCount);
 sortStatus   destroyPThreads      (PThreads *threads);
 
-sortContext *initializeSortContext(size_t arraySize = DEFAULT_ARRAY_SIZE, unsigned int seed = SEED, size_t threadsCount = DEFAULT_THREADS_COUNT);
+sortContext *initializeSortContext(const size_t arraySize    = DEFAULT_ARRAY_SIZE, 
+                                   const unsigned int seed   = SEED, 
+                                   const size_t threadsCount = DEFAULT_THREADS_COUNT);
 sortStatus   destroySortContext   (sortContext *context);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //

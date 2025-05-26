@@ -1,11 +1,11 @@
 #include <stdlib.h>
 
-#include "sortContext.h"
 #include "customWarning.h"
+#include "sortContext.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-sortStatus generateRandomArray(Array *array, size_t size, unsigned int seed) {
+sortStatus generateRandomArray(Array *array, const size_t size, const unsigned int seed) {
     customWarning(array, ARRAY_BAD_POINTER);
 
     srand(seed);
@@ -17,7 +17,7 @@ sortStatus generateRandomArray(Array *array, size_t size, unsigned int seed) {
     return NO_ERRORS;
 }
 
-sortStatus initializeArray(Array *array, size_t size) {
+sortStatus initializeArray(Array *array, const size_t size) {
     customWarning(array, ARRAY_BAD_POINTER);
 
     array->array = (int *)calloc(size, sizeof(int));
@@ -39,7 +39,7 @@ sortStatus destroyArray(Array *array) {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-sortStatus initializePThreads(PThreads *threads, size_t threadsCount) {
+sortStatus initializePThreads(PThreads *threads, const size_t threadsCount) {
     customWarning(threads, THREADS_ARRAY_BAD_POINTER);
 
     threads->threads = (pthread_t *)calloc(threadsCount, sizeof(pthread_t));
@@ -53,7 +53,6 @@ sortStatus initializePThreads(PThreads *threads, size_t threadsCount) {
 sortStatus destroyPThreads(PThreads *threads) {
     customWarning(threads, THREADS_ARRAY_BAD_POINTER);
 
-    // TODO: нужно ли как то проверять и завершать потоки?
     FREE_(threads->threads);
     threads->threadsCount = 0;
 
@@ -62,7 +61,7 @@ sortStatus destroyPThreads(PThreads *threads) {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-sortContext *initializeSortContext(size_t arraySize, unsigned int seed, size_t threadsCount) {
+sortContext *initializeSortContext(const size_t arraySize, const unsigned int seed, const size_t threadsCount) {
     sortContext *context = (sortContext *)calloc(1, sizeof(sortContext));
     customWarning(context, NULL);
 

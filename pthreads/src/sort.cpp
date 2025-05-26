@@ -1,9 +1,9 @@
-#include "sort.h"
-#include "customWarning.h"
-#include "sortContext.h"
-
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#include "customWarning.h"
+#include "sort.h"
+#include "sortContext.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -71,7 +71,7 @@ sortStatus sortArray(sortContext *context) {
     return NO_ERRORS;
 }
 
-void *sortSubarray(void *data) {
+void *sortSubarray(const void *data) {
     Chunk *arrayChunk = (Chunk *)data;
 
     qsort(arrayChunk->array    + arrayChunk->startIndex,
@@ -136,7 +136,7 @@ sortStatus mergeSubarrays(sortContext *context) {
     return NO_ERRORS;
 }
 
-sortStatus merge(int *array, size_t left, size_t mid, size_t right) {
+sortStatus merge(int *array, const size_t left, const size_t mid, const size_t right) {
     size_t leftSize  = mid   - left + 1;
     size_t rightSize = right - mid;
 
