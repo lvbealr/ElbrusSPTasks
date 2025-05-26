@@ -1,9 +1,9 @@
 #ifndef MATRIX_H_
 #define MATRIX_H_
 
-#include <unistd.h>
-#include <stdlib.h>
 #include <immintrin.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 

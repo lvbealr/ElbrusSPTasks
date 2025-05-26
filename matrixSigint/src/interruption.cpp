@@ -1,7 +1,8 @@
 #include <signal.h>
 #include <stdio.h>
-#include "interruption.h"
 #include <stdlib.h>
+
+#include "interruption.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 

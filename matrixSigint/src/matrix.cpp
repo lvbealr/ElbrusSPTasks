@@ -1,8 +1,8 @@
-#include "matrix.h"
-#include "customWarning.h"
+#include <fcntl.h>
 #include <signal.h>
 
-#include <fcntl.h>
+#include "customWarning.h"
+#include "matrix.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -103,6 +103,8 @@ Matrix *multiplyMatrices(const Matrix *matrixA, const Matrix *matrixB) {
 
     matrixC->dimension = dimension;
 
+    #if defined(__x86_64__) || defined(__amd64__) || defined(__AVX2__)
+
     int *a = matrixA->array;
     int *b = matrixB->array;
     int *c = matrixC->array;
@@ -150,6 +152,24 @@ Matrix *multiplyMatrices(const Matrix *matrixA, const Matrix *matrixB) {
             }
         }
     }
+
+    #else
+
+    for (size_t i = 0; i < dimension; i++) {
+        currentI = i;
+
+        for (size_t j = 0; j < dimension; j++) {
+            currentJ = j;
+
+            matrixC->array[i * dimension + j] = 0;
+
+            for (size_t k = 0; k < dimension; k++) {
+                matrixC->array[i * dimension + j] += matrixA->array[i * dimension + k] * matrixB->array[k * dimension + j];
+            }
+        }
+    }
+
+    #endif
 
     return matrixC;
 }
