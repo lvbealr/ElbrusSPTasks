@@ -1,9 +1,8 @@
 #include <stdlib.h>
-
-#include "getterInfo.h"
-#include "customWarning.h"
-
 #include <string.h>
+
+#include "customWarning.h"
+#include "getterInfo.h"
 
 #define FREE_(ptr) do { \
     free(ptr);          \
@@ -46,7 +45,7 @@ getterInfoStatus getFileInfo(fileInfo *file) {
     return NO_ERRORS;
 };
 
-getterInfoStatus printFileInfo(fileInfo *file) {
+getterInfoStatus printFileInfo(const fileInfo *file) {
     customWarning(file,           FILE_BAD_POINTER);
     customWarning(file->fileName, BAD_FILE_NAME);
     customWarning(file->info,     FILE_INFO_BAD_POINTER);

@@ -29,9 +29,9 @@ fileInfo *setFile(const char *fileName);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-getterInfoStatus getFileInfo   (fileInfo *file);
-getterInfoStatus printFileInfo (fileInfo *file);
-getterInfoStatus deleteFileInfo(fileInfo *file);
+getterInfoStatus getFileInfo   (      fileInfo *file);
+getterInfoStatus printFileInfo (const fileInfo *file);
+getterInfoStatus deleteFileInfo(      fileInfo *file);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
