@@ -1,0 +1,3 @@
+[submodule "logicParser/Buffer"]
+	path = logicParser/Buffer
+	url = git@github.com:lvbealr/Buffer.git
