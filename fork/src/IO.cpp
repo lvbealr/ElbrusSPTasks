@@ -146,7 +146,7 @@ IOError showContent(File *file) {
     customWarning(file->fileContent, FILE_CONTENT_BAD_POINTER);
 
     customPrint(purple, bold, bgDefault, "%s:\n", file->path);
-    customPrint(white,  bold, bgDefault, "%s",    file->fileContent);
+    customPrint(white,  bold, bgDefault, "%s\n",  file->fileContent);
 
     return NO_ERRORS;
 }
