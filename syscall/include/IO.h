@@ -39,14 +39,14 @@ struct fileContainer {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-fileContainer *initializeFileContainer(char **fileArray, size_t capacity);
+fileContainer *initializeFileContainer(char **fileArray, const size_t capacity);
 Status         destroyFileContainer   (fileContainer *container);
 
 Status         handleFileNames(fileContainer *container, char **fileArray);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-Status         initializeFile(File *file, char *fileName, int flags, errorOutputMode mode);
+Status         initializeFile(File *file, char *fileName, const int flags, const errorOutputMode mode);
 Status         destroyFile   (File *file);
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //

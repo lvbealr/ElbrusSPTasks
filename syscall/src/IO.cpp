@@ -1,13 +1,13 @@
 #include <cstdio>
-#include <stdlib.h>
-#include <inttypes.h>
-#include <fcntl.h>
 #include <errno.h>
-#include <unistd.h>
+#include <fcntl.h>
+#include <inttypes.h>
+#include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
-#include "IO.h"
 #include "customWarning.h"
+#include "IO.h"
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -29,7 +29,7 @@ static const unsigned int SEED = 42;
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-fileContainer *initializeFileContainer(char **fileArray, size_t capacity) {
+fileContainer *initializeFileContainer(char **fileArray, const size_t capacity) {
     customWarning(fileArray, NULL);
 
     fileContainer *container = (fileContainer *)calloc(1, sizeof(fileContainer));
@@ -115,7 +115,7 @@ Status handleFileNames(fileContainer *container, char **fileArray) {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
-Status initializeFile(File *file, char *fileName, int flags, errorOutputMode mode) {
+Status initializeFile(File *file, char *fileName, const int flags, const errorOutputMode mode) {
     customWarning(file,     FILE_BAD_POINTER);
     customWarning(fileName, BAD_FILE_NAME);
 
