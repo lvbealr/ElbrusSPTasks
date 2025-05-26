@@ -1,10 +1,10 @@
+#include <getopt.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "basics.h"
 #include "customWarning.h"
 #include "parser.h"
-#include "basics.h"
-
-#include <stdio.h>
-#include <getopt.h>
-#include <string.h>
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------- //
 
