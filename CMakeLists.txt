@@ -24,5 +24,5 @@ endif()
 
 add_subdirectory(customWarning)
 add_subdirectory(logicParser)
-add_subdirectory(binaryTree)
+add_subdirectory(logicParser/binaryTree)
 add_subdirectory(logicParser/Buffer)
